@@ -32,6 +32,50 @@ function Team() {
             headerAlign: "left",
             align: "left",
           },
+
+          {
+            field: "phone",
+            headerName: "Phone Number",
+            flex: 1,
+          },
+
+          {
+            field: "email",
+            headerName: "Email",
+            flex: 1,
+          },
+
+          {
+              field: "access",
+              headerName: "Access Level",
+              flex: 1,
+              renderCall: ( { row: {access} } ) => {//destructuring the access data so that can be accessed in the function
+                return (
+                    <Box
+                      width="60%"
+                      m="0 auto"
+                      p="5px"
+                      display="flex"
+                      justifyContent="center"
+                      backgroundColor={
+                        access === "admin"
+                          ? colors.greenAccent[600]
+                          : access === "manager"
+                          ? colors.greenAccent[700]
+                          : colors.greenAccent[700]
+                      }
+                      borderRadius="4px"
+                    >
+                      {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
+                      {access === "manager" && <SecurityOutlinedIcon />}
+                      {access === "user" && <LockOpenOutlinedIcon />}
+                      <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+                        {access}
+                      </Typography>
+                    </Box>
+                  )
+              }
+          }
     ]
 
     return (
