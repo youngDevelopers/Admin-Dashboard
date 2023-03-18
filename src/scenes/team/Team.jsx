@@ -10,7 +10,7 @@ import Header from "../../components/Header";
 
 function Team() {
     const theme = useTheme()
-    const colors = tokens(theme.palatte.mode)
+    const colors = tokens(theme.palette.mode)
     const columns = [
 
         {// for each data item choose id attribute as the first col of the data grid and name using the headerName
@@ -49,7 +49,7 @@ function Team() {
               field: "access",
               headerName: "Access Level",
               flex: 1,
-              renderCall: ( { row: {access} } ) => {//destructuring the access data so that can be accessed in the function
+              renderCell: ( { row: {access} } ) => {//destructuring the access data so that can be accessed in the function
                 return (
                     <Box
                       width="60%"
@@ -59,10 +59,10 @@ function Team() {
                       justifyContent="center"
                       backgroundColor={
                         access === "admin"
-                          ? colors.greenAccent[600]
+                          ? colors.greenAccent[900]
                           : access === "manager"
                           ? colors.greenAccent[700]
-                          : colors.greenAccent[700]
+                          : colors.greenAccent[400]
                       }
                       borderRadius="4px"
                     >
@@ -79,9 +79,34 @@ function Team() {
     ]
 
     return (
-        <Box >
+        <Box m="20px ">
             <Header title="TEAM" subtitle="Manage our Team Members" />
-            <Box >
+            <Box m="40px 0 0 0" height="75vh" sx={ {
+                "& .MuiDataGrid-root": {
+                    border: "none"
+                },
+                "& .MuiDataGrid-cell": {
+                    border: "none"
+                },
+                "& .name-column--cell": {
+                    color: colors.greenAccent[300],
+                  },
+                  "& .MuiDataGrid-columnHeaders": {
+                    backgroundColor: colors.blueAccent[700],
+                    borderBottom: "none",
+                  },
+                  "& .MuiDataGrid-virtualScroller": {
+                    backgroundColor: colors.primary[400],
+                  },
+                  "& .MuiDataGrid-footerContainer": {
+                    borderTop: "none",
+                    backgroundColor: colors.blueAccent[700],
+                  },
+                  "& .MuiCheckbox-root": {
+                    color: `${colors.greenAccent[200]} !important`,
+                  },
+                } } 
+            >
                 <DataGrid 
                     rows = {mockDataTeam}
                     columns = {columns}
