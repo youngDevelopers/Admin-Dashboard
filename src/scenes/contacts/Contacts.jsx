@@ -14,7 +14,7 @@ function Calendar() {
         {
             field: 'id',
             headerName: 'ID',
-            flex= 0.5,
+            flex: 0.5,
         },
 
         {
@@ -46,13 +46,13 @@ function Calendar() {
         {
             field: "email",
             headerName: "Email",
-            flex: 1,
+            flex: 1.1,
         },
 
         {
             field: "address",
             headerName: "Address",
-            flex: 1,
+            flex:1,
         },
 
         {
